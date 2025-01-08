@@ -3,28 +3,17 @@ kind: Application
 metadata:
   name: certificate-full-application
 spec:
-  generators:
-    - git:
-        repoURL: https://github.com/GitTactician/argocd-testEnv.git  # Your Git repository URL
-        targetRevision: HEAD  # Branch to track
-        directories:
-          - path: cert-manager  # Path to the cert-manager directory
-          - path: nginx         # Path to the nginx directory
-  template:
-    metadata:
-      name: '{{path.basename}}'  # Use the directory name as the application name
-    spec:
-      destination:
-        name: ''
-        namespace: applications
-        server: https://kubernetes.default.svc
-      source:
-        path: '{{path}}'
-        repoURL: https://github.com/GitTactician/argocd-testEnv.git
-        targetRevision: main
-      sources: []
-      project: cert-env
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+  destination:
+    name: ''
+    namespace: applications
+    server: https://kubernetes.default.svc
+  source:
+    path: ./
+    repoURL: https://github.com/GitTactician/argocd-testEnv.git
+    targetRevision: HEAD
+  sources: []
+  project: cert-env
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
