@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/GitTactician/argocd-testEnv.git
     targetRevision: HEAD
-    path: ./  # Path to where the individual apps are defined
+    path: ./applications  # Path to where the individual apps are defined
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
