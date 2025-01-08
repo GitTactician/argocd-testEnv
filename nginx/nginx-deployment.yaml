@@ -16,7 +16,7 @@ spec:
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:ingress-nginx-3.15.2  # Using the specified tag
+          image: nginx/nginx-ingress:nightly-alpine   # Using the specified tag
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-ingress-controller
