@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-app
+  name: cert-manager
 spec:
   destination:
     name: ''
@@ -10,7 +10,7 @@ spec:
   source:
     path: ./cert-manager
     repoURL: https://github.com/GitTactician/argocd-testEnv.git
-    targetRevision: main
+    targetRevision: HEAD
   sources: []
   project: cert-env
   syncPolicy:
