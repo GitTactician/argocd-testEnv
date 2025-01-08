@@ -1,12 +1,14 @@
 project: cert-env
 source:
   repoURL: https://github.com/GitTactician/argocd-testEnv.git  # Replace with your GitHub repository URL
-  targetRevision: main  # Branch to deploy from
-  path: ./applications  # Deploys cert-manager Helm chart from this folder
+  path: ./nginx  # Path to your nginx resources
+  targetRevision: HEAD  # Branch to deploy from
 destination:
   server: https://kubernetes.default.svc
-  namespace: applications  # Target namespace for cert-manager
+  namespace: nginx  # Target namespace for nginx
 syncPolicy:
   automated:
     prune: true
     selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
