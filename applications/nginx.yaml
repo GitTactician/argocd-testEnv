@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: ''
@@ -11,9 +14,13 @@ spec:
     path: ./nginx
     repoURL: https://github.com/GitTactician/argocd-testEnv.git
     targetRevision: HEAD
-  sources: []
   project: cert-env
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+  
+  
+  
