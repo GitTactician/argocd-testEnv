@@ -21,7 +21,7 @@ spec:
       source:
         path: '{{path}}'
         repoURL: https://github.com/GitTactician/argocd-testEnv.git
-        targetRevision: HEAD
+        targetRevision: main
       sources: []
       project: cert-env
       syncPolicy:
