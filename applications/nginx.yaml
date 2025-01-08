@@ -8,7 +8,7 @@ spec:
     namespace: nginx
     server: https://kubernetes.default.svc
   source:
-    path: ./nginx
+    path: nginx
     repoURL: https://github.com/GitTactician/argocd-testEnv.git
     targetRevision: HEAD
   sources: []
