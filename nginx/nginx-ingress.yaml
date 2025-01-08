@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-ingress
-  namespace: nginx  # Replace with the appropriate namespace
+  name: nginx-ingress-app
+  namespace: nginx-ingress  # Replace with the appropriate namespace
   annotations:
     kubernetes.io/ingress.class: "nginx"  # Use NGINX Ingress Controller
     cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Reference Cert-Manager ClusterIssuer
