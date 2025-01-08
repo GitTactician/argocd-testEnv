@@ -1,12 +1,19 @@
-project: cert-env
-source:
-  repoURL: https://github.com/GitTactician/argocd-testEnv.git  # Replace with your GitHub repository URL
-  targetRevision: main  # Branch to deploy from
-  path: ./applications  # Deploys cert-manager Helm chart from this folder
-destination:
-  server: https://kubernetes.default.svc
-  namespace: applications  # Target namespace for cert-manager
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: certificate-full-application
+spec:
+  destination:
+    name: ''
+    namespace: applications
+    server: https://kubernetes.default.svc
+  source:
+    path: ./applications
+    repoURL: https://github.com/GitTactician/argocd-testEnv.git
+    targetRevision: HEAD
+  sources: []
+  project: cert-env
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
