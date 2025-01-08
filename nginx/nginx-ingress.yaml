@@ -2,18 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-ingress
-  namespace: nginx
+  namespace: nginx  # Adjust this to your app's namespace
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Use Cert-Manager ClusterIssuer
 spec:
   tls:
     - hosts:
-        - myguest.virtualbox.org  # Replace with your domain name
-      secretName: example-tls  # TLS secret name created by Cert-Manager
+        - myguest.virtualbox.org  # Replace with your domain
+      secretName: myguest.virtualbox.org-tls  # TLS secret name
   rules:
-    - host: myguest.virtualbox.org  # Replace with your domain name
+    - host: myguest.virtualbox.org  # Replace with your domain
       http:
         paths:
           - path: /
