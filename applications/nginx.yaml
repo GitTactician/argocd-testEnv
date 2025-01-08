@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx
-  namespace: nginx-ingress
+  namespace: nginx
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: ''
-    namespace: nginx-ingress
+    namespace: nginx
     server: https://kubernetes.default.svc
   source:
     path: ./nginx
