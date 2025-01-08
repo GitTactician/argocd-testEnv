@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-nginx
+  name: cert-manager
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/GitTactician/argocd-testEnv.git
     targetRevision: HEAD
-    path: .
+    path: certManager-app  # Path to the cert-manager directory
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
