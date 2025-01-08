@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-and-nginx
+  namespace: cert-manager-app  # Ensure this matches your ArgoCD installation namespace
+spec:
+  project: cert-env
+
+  source:
+    repoURL: https://github.com/GitTactician/argocd-testEnv.git  # Replace with your GitHub repository URL
+    targetRevision: main  # Branch to deploy from
+    path: ./cert-manager  # Deploys cert-manager Helm chart from this folder
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager  # Target namespace for cert-manager
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: nginx-app  # Ensure this matches your ArgoCD installation namespace
+spec:
+  project: cert-env
+
+  source:
+    repoURL: https://github.com/GitTactician/argocd-testEnv.git  # Replace with your GitHub repository URL
+    targetRevision: main  # Branch to deploy from
+    path: ./nginx  # Path to your nginx resources
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx  # Target namespace for nginx
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
