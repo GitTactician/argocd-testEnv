@@ -280,6 +280,7 @@ spec:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/component: controller
 ---
+# i edited this from loadbalancer to nodeport
 # Source: ingress-nginx/templates/controller-service.yaml
 apiVersion: v1
 kind: Service
@@ -296,7 +297,7 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 spec:
-  type: LoadBalancer
+  type: NodePort
   ipFamilyPolicy: SingleStack
   ipFamilies: 
     - IPv4
